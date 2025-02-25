@@ -1,5 +1,4 @@
 import NewItem from './new-item';
-import FormComponent from './form-component';
 
 export default function Page() {
     return (
