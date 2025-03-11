@@ -2,41 +2,77 @@
 
 import Item from "./item.js";
 import { useState } from "react";
-import {items} from "./items.json";
+import items from "./items.json";
 // import items from "./items.json";
 // import {sortby} from "./sortby.js";
 // import {Item} from "./items.js";
 // import {items} from "./items.js";
 
+
 export default function ItemList() {
+  let itemList = [...items];
   const [sortby, setSortBy] = useState("name");
-  const [Item, setItem] = useState(items);
+  const [sortedItems, setSortedItems] = useState([...itemList]);
 
-  const sortedItems = (criteria) => {
-    if (criteria === "name") {
-      sortedItems.sort((a, b) => a.name.localeCompare(b.name));
-    } else if (criteria === "category") {
-      sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+  const sortItems = () => {
+    if (sortby === "name") {
+      itemList.sort((a, b) => a.name.localeCompare(b.name));
+      // setSortedItems([...itemList]);
+    } else if (sortby === "category") {
+      itemList.sort((a, b) => a.category.localeCompare(b.category));
+      // setSortedItems([...itemList]);
     }
-    setItem(sortedItems)
+    setSortedItems([...itemList]);
   };
-
-  const handleSort = (criteria) => {
-    setSortBy(criteria);
-    sortedItems(criteria);
-  };
-
   return (
     <main>
-      <button onClick={() => handleSort("name")}>Sort by Name</button>
-      <button onClick={() => handleSort("category")}>Sort by Category</button>
+      {/* <button onClick={() => sortedItems("name")}>Sort by Name</button>
+      <button onClick={() => sortedItems("category")}>Sort by Category</button> */}
+      <button onClick={() => 
+        (setSortBy("name"),
+        // console.log("sort by name"),
+        sortItems())
+        }>Sort by Name</button>
+      <button onClick={() => (setSortBy("category"),
+      // console.log("sort by category"),
+        sortItems())}>Sort by Category</button>
       <h1 className="font-bold text-3xl p-4 text-slate-200">Shopping List</h1>
-      {items.map((item, index) => (
-        <Item key={index} {...item} />
+      {sortedItems.map((items) => (
+        <Item key={items.id} {...items} />
       ))}
     </main>
   );
 }
+
+// export default function ItemList() {
+//   const [sortby, setSortBy] = useState("name");
+//   const [items, setItem] = useState([]);
+
+//   const sortedItems = (criteria) => {
+//     if (criteria === "name") {
+//       sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+//     } else if (criteria === "category") {
+//       sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+//     }
+//     setItem(sortedItems)
+//   };
+
+//   const handleSort = (criteria) => {
+//     setSortBy(criteria);
+//     sortedItems(criteria);
+//   };
+
+//   return (
+//     <main>
+//       <button onClick={() => handleSort("name")}>Sort by Name</button>
+//       <button onClick={() => handleSort("category")}>Sort by Category</button>
+//       <h1 className="font-bold text-3xl p-4 text-slate-200">Shopping List</h1>
+//       {items.map((item, index) => (
+//         <Item key={index} {...items} />
+//       ))}
+//     </main>
+//   );
+// }
 
 //   const sortedItems = [...Item];
 
