@@ -2,7 +2,7 @@
 
 import {use, useEffect, useState} from "react";
 
-export default function NewItem() {
+export default function NewItem({onAddItem}) {
     const [count, setCount] = useState(0);
     const [name, setName] = useState("");
     const [category, setCategory] = useState("produce");
@@ -28,13 +28,16 @@ export default function NewItem() {
         const category = event.target.category.value;
     
         const newItem = {
+            id: Math.random().toString(36).substring(2, 10),
             name: name,
-            count: itemCount,
+            // count: itemCount,
+            quantity: itemCount,
             category: category,
         };
     
         console.log(newItem);
-        alert("New item added: " + name + " " + count + " " + category);
+        // alert("New item added: " + name + " " + itemCount + " " + category);
+        onAddItem(newItem);
         event.target.reset();
     
     }
