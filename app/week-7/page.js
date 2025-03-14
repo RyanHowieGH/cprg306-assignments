@@ -1,7 +1,7 @@
 'use client';
 
-import ItemList from './item-list.js';
-import NewItem from './new-item.js';
+import ItemList from '../week-7/item-list.js';
+import NewItem from '../week-7/new-item.js';
 import ItemsData from './items.json';
 import React, { useState } from 'react';
 

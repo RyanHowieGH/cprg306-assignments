@@ -1,6 +1,6 @@
 "use client"
 
-import Item from "../week-7/item.js";
+import Item from "./item.js";
 import { useEffect, useState } from "react";
 // import items from "./items.json";
 
