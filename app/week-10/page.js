@@ -18,7 +18,7 @@ export default function Page() {
                 <p>
                     Welcome, {user.displayName}!
                     Your email is {user.email}.
-                    <Link href="/week-9/secure">Go to Shopping List</Link>
+                    <Link href="/week-10/secure">Go to Shopping List</Link>
                 </p>
             )}
         </p>

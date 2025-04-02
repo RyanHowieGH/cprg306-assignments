@@ -4,7 +4,7 @@ import ItemList from './item-list.js';
 import NewItem from './new-item.js';
 import ItemsData from './items.json';
 import React, { useState } from 'react';
-import { useUserAuth } from "../_utils/auth-context";
+import { useUserAuth } from "../_utils/auth-context.js";
 import  Link  from "next/link";
 
 export default function Page(){
@@ -20,7 +20,7 @@ export default function Page(){
         <main>
             {!user && (
         <main><p>You are not logged in. Please sign in to continue.</p>
-        <p><Link href="../week-9/">Go to login page</Link></p></main>
+        <p><Link href="../week-10/">Go to login page</Link></p></main>
         )}
         {user && (
         <main className="bg-gray-800">
